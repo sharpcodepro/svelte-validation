@@ -1,0 +1,144 @@
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: #333;
+  margin: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+main {
+  text-align: center;
+  padding: 1em;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #ff3e00;
+  font-size: 4em;
+  font-weight: 100;
+}
+
+@media (min-width: 640px) {
+  main {
+    max-width: none;
+  }
+}
+
+a {
+  color: rgb(0, 100, 200);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: rgb(0, 80, 160);
+}
+
+input[type="text"],
+input[type="password"],
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  padding: 0.4em;
+  margin: 0 0 0.5em 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+input:disabled {
+  color: #ccc;
+}
+
+button {
+  color: #333;
+  background-color: #f4f4f4;
+  outline: none;
+}
+
+button:disabled {
+  color: #999;
+}
+
+button:not(:disabled):active {
+  background-color: #ddd;
+}
+
+button:focus {
+  border-color: #666;
+}
+
+.description {
+  border: solid 1px #eaeaea;
+  background-color: #f5f5f5;
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  color: #555;
+  max-width: 40rem;
+  line-height: 150%;
+  border-radius: 2px;
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* validation */
+
+input:focus {
+  outline: none;
+}
+.valid {
+  color: #00dd00;
+}
+.invalid {
+  color: #dd0000;
+}
+.valid input,
+.valid input:focus {
+  border: solid 1px #00dd00;
+}
+.invalid input,
+.invalid input:focus {
+  border: solid 1px #dd0000;
+}
+
+/* tabs */
+
+.tabs {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100;
+}
+.tab {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+.tab:hover {
+  background-color: #eee;
+  border-radius: 0.5rem;
+}
+.tab.active {
+  background-color: #ff3e00;
+  color: white;
+  border-radius: 0.5rem;
+}

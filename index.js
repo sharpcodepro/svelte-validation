@@ -5,8 +5,9 @@ import {
     writable
 } from "svelte/store";
 
-const Validator = function (formFieldGetter, constraints) {
+const Validator = function (formFieldGetter, constraints, validationFunction = validate) {
 
+    let validationFunc = validationFunction;
     let prevFormFieldValues = formFieldGetter();
     let backendErrors = {};
     let dirty = {};
@@ -16,6 +17,7 @@ const Validator = function (formFieldGetter, constraints) {
     let isFormDirty = false;
 
     const {
+        set,
         subscribe,
         update
     } = writable({
@@ -26,13 +28,20 @@ const Validator = function (formFieldGetter, constraints) {
         isFormDirty
     });
 
-    const reset = function () {
+    const reset = function (leaveFormAsValid) {
         dirty = {};
         isFormDirty = false;
         backendErrors = {};
         valid = {};
-        dirty = {};
         invalid = {};
+        isFormValid = leaveFormAsValid;
+        set({
+            dirty,
+            valid,
+            invalid,
+            isFormValid,
+            isFormDirty
+        });
     }
 
     const setBackendErrors = function (errors) {
@@ -69,7 +78,7 @@ const Validator = function (formFieldGetter, constraints) {
 
         if (Object.keys(dirty).length > 0) {
 
-            let validateResult = validate(newFormFieldValues, constraints);
+            let validateResult = validationFunc(newFormFieldValues, constraints);
 
             for (let key in validateResult)
                 if (dirty[key]) invalid[key] = validateResult[key];
